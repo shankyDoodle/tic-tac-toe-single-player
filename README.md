@@ -1,26 +1,22 @@
-# Foobar
+# Tic-Tac-Toe Game
 
-Foobar is a Python library for dealing with word pluralization.
+This is a single player Tic-Tac-Toe game where you play against the BOT.
+Which runs using React.Js and is using parcel.js as a bundler.
+
+## Demo 
+[Tic-Tac-Toe Live](https://shankydoodle.github.io/tic-tac-toe-single-player/)
+
 
 ## Installation
 
-Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+Clone or Download Project
 
+And run following command. 
 ```bash
-pip install foobar
+npm run build
 ```
 
-## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+Then run HTML file
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
