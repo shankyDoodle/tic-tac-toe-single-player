@@ -1,35 +1,36 @@
 const React = require('react');
+const Board = require('./Board');
 
 class Game extends React.Component {
   constructor() {
     super();
     this.state = {
-      newGamekey: 1,
+      newGameKey: 1,
     };
-    this.newGametry = this.newGametry.bind(this);
+
+    this.newGameTry = this.newGameTry.bind(this);
   }
 
-  newGametry() {
-    var keychange = this.state.newGamekey;
-    keychange++;
+  newGameTry() {
+    let keyChange = this.state.newGameKey;
+    keyChange++;
     this.setState({
-      newGamekey: keychange,
+      newGameKey: keyChange,
     })
   }
 
   render() {
-    return <div>Hello World</div>;
-    /*return (
-      <div key={this.state.newGamekey} className="gameContainer">
+    return (
+      <div key={this.state.newGameKey} className="gameContainer">
         <h1>Tic Tac Toe</h1>
         <div className="gameBoard">
           <Board/>
         </div>
         <div className="gameInfo">
-          <button onClick={this.newGametry.bind(this)}>Reset</button>
+          <button onClick={this.newGameTry}>Reset</button>
         </div>
       </div>
-    );*/
+    );
   }
 }
 

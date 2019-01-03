@@ -24482,7 +24482,337 @@ if ("development" === 'production') {
 } else {
   module.exports = require('./cjs/react-dom.development.js');
 }
-},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"component/Game.jsx":[function(require,module,exports) {
+},{"./cjs/react-dom.development.js":"node_modules/react-dom/cjs/react-dom.development.js"}],"component/Square.jsx":[function(require,module,exports) {
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+var React = require('react');
+
+var Square =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Square, _React$Component);
+
+  function Square() {
+    _classCallCheck(this, Square);
+
+    return _possibleConstructorReturn(this, _getPrototypeOf(Square).apply(this, arguments));
+  }
+
+  _createClass(Square, [{
+    key: "render",
+    value: function render() {
+      var _this = this;
+
+      return React.createElement("button", {
+        className: "square",
+        onClick: function onClick() {
+          return _this.props.onClick();
+        }
+      }, this.props.value);
+    }
+  }]);
+
+  return Square;
+}(React.Component);
+
+module.exports = Square;
+},{"react":"node_modules/react/index.js"}],"component/Board.jsx":[function(require,module,exports) {
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
+
+function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
+
+function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+
+function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
+
+var React = require('react');
+
+var Square = require('./Square');
+
+var Board =
+/*#__PURE__*/
+function (_React$Component) {
+  _inherits(Board, _React$Component);
+
+  function Board() {
+    var _this;
+
+    _classCallCheck(this, Board);
+
+    _this = _possibleConstructorReturn(this, _getPrototypeOf(Board).call(this));
+    _this.state = {
+      squares: Array(9).fill(null),
+      nextPlayer: true,
+      gameWinner: null
+    };
+    _this.handleClick = _this.handleClick.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    return _this;
+  }
+
+  _createClass(Board, [{
+    key: "nextMove",
+    value: function nextMove(squareArrays) {
+      console.log("ALET");
+      var count = 0,
+          move = 0,
+          item,
+          ca = 0;
+      var corner = [0, 2, 6, 8];
+      var middle = [1, 3, 5, 7];
+      var lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+
+      for (var i = 0; i < this.state.squares.length; i++) {
+        if (this.state.squares[i] == null) {
+          count++;
+        }
+      }
+
+      if (count == 9) {
+        move = 1;
+      } else if (count == 7) {
+        move = 2;
+      } //if first Move
+
+
+      if (move == 1) {
+        //if first move is center
+        if (squareArrays[4] == 'X') {
+          item = corner[Math.floor(Math.random() * corner.length)];
+        } else {
+          item = 4;
+        }
+      } // Not first move
+      else {
+          var winCheck = 1;
+          var compWin = 1;
+
+          for (var iterator = 0; iterator < lines.length; iterator++) {
+            var _lines$iterator = _slicedToArray(lines[iterator], 3),
+                a = _lines$iterator[0],
+                b = _lines$iterator[1],
+                c = _lines$iterator[2];
+
+            if (squareArrays[a] == 'O' && squareArrays[b] == 'O') {
+              if (squareArrays[c] == null) {
+                item = c;
+                console.log(c);
+                winCheck++;
+                compWin++;
+                break;
+              }
+            }
+
+            if (squareArrays[b] == 'O' && squareArrays[c] == 'O') {
+              if (squareArrays[a] == null) {
+                item = a;
+                console.log(a);
+                winCheck++;
+                compWin++;
+                break;
+              }
+            }
+
+            if (squareArrays[a] == 'O' && squareArrays[c] == 'O') {
+              if (squareArrays[b] == null) {
+                item = b;
+                console.log(b);
+                winCheck++;
+                compWin++;
+                break;
+              }
+            }
+          }
+
+          if (compWin == 1) {
+            for (var _iterator = 0; _iterator < lines.length; _iterator++) {
+              var _lines$_iterator = _slicedToArray(lines[_iterator], 3),
+                  a = _lines$_iterator[0],
+                  b = _lines$_iterator[1],
+                  c = _lines$_iterator[2];
+
+              if (squareArrays[a] == 'X' && squareArrays[b] == 'X') {
+                if (squareArrays[c] == null) {
+                  item = c;
+                  console.log(c);
+                  winCheck++;
+                  break;
+                }
+              }
+
+              if (squareArrays[b] == 'X' && squareArrays[c] == 'X') {
+                if (squareArrays[a] == null) {
+                  item = a;
+                  console.log(a);
+                  winCheck++;
+                  break;
+                }
+              }
+
+              if (squareArrays[a] == 'X' && squareArrays[c] == 'X') {
+                if (squareArrays[b] == null) {
+                  item = b;
+                  console.log(b);
+                  winCheck++;
+                  break;
+                }
+              }
+            }
+          }
+
+          if (winCheck == 1 && move == 2) {
+            if (squareArrays[4] == 'X') {
+              if (squareArrays[0]) {
+                item = 6;
+              } else {
+                item = 0;
+              }
+            } else if (squareArrays[0] == 'X' || squareArrays[2] == 'X' || squareArrays[6] == 'X' || squareArrays[8] == 'X') {
+              item = middle[Math.floor(Math.random() * middle.length)];
+            } else {
+              item = corner[Math.floor(Math.random() * corner.length)];
+            }
+          } else if (winCheck == 1) {
+            var temp = [];
+
+            for (var j = 0; j < squareArrays.length; j++) {
+              if (squareArrays[j] == null) {
+                temp[ca] = j;
+                ca++;
+              }
+            }
+
+            item = temp[Math.floor(Math.random() * temp.length)];
+          }
+        }
+
+      if (!squareArrays[item]) {
+        squareArrays[item] = 'O';
+        this.setState({
+          squares: squareArrays,
+          nextPlayer: !this.state.nextPlayer
+        });
+      }
+    }
+  }, {
+    key: "handleClick",
+    value: function handleClick(i) {
+      var winner = Board.calculateWinner(this.state.squares);
+
+      if (!(this.state.squares[i] || winner)) {
+        var squareArrays = this.state.squares.slice();
+        squareArrays[i] = 'X';
+
+        var _winner = Board.calculateWinner(squareArrays);
+
+        if (_winner) {
+          this.setState({
+            squares: squareArrays,
+            nextPlayer: !this.state.nextPlayer
+          });
+        } else {
+          this.nextMove(squareArrays);
+        }
+      }
+    }
+  }, {
+    key: "renderSquare",
+    value: function renderSquare(i) {
+      return React.createElement(Square, {
+        value: this.state.squares[i],
+        onClick: this.handleClick.bind(this, i)
+      });
+    }
+  }, {
+    key: "render",
+    value: function render() {
+      var winner = Board.calculateWinner(this.state.squares);
+      var status;
+      var drawCheck = 0;
+
+      for (var i = 0; i < this.state.squares.length; i++) {
+        if (this.state.squares[i] == null) {
+          drawCheck++;
+          break;
+        }
+      }
+
+      if (winner) {
+        status = "Winner : " + winner;
+      } else if (drawCheck == 0) {
+        status = "It's tie!!!!! Better luck Next time";
+      }
+
+      return React.createElement("div", {
+        className: "boxHolder"
+      }, React.createElement("div", {
+        className: "status"
+      }, status), React.createElement("div", {
+        className: "eachRow"
+      }, this.renderSquare(0), this.renderSquare(1), this.renderSquare(2)), React.createElement("div", {
+        className: "eachRow"
+      }, this.renderSquare(3), this.renderSquare(4), this.renderSquare(5)), React.createElement("div", {
+        className: "eachRow"
+      }, this.renderSquare(6), this.renderSquare(7), this.renderSquare(8)));
+    }
+  }], [{
+    key: "calculateWinner",
+    value: function calculateWinner(squares) {
+      var lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
+
+      for (var i = 0; i < lines.length; i++) {
+        var _lines$i = _slicedToArray(lines[i], 3),
+            a = _lines$i[0],
+            b = _lines$i[1],
+            c = _lines$i[2];
+
+        if (squares[a] && squares[a] === squares[b] && squares[a] === squares[c]) {
+          return squares[a];
+        }
+      }
+
+      return null;
+    }
+  }]);
+
+  return Board;
+}(React.Component);
+
+module.exports = Board;
+},{"react":"node_modules/react/index.js","./Square":"component/Square.jsx"}],"component/Game.jsx":[function(require,module,exports) {
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -24503,6 +24833,8 @@ function _assertThisInitialized(self) { if (self === void 0) { throw new Referen
 
 var React = require('react');
 
+var Board = require('./Board');
+
 var Game =
 /*#__PURE__*/
 function (_React$Component) {
@@ -24515,36 +24847,34 @@ function (_React$Component) {
 
     _this = _possibleConstructorReturn(this, _getPrototypeOf(Game).call(this));
     _this.state = {
-      newGamekey: 1
+      newGameKey: 1
     };
-    _this.newGametry = _this.newGametry.bind(_assertThisInitialized(_assertThisInitialized(_this)));
+    _this.newGameTry = _this.newGameTry.bind(_assertThisInitialized(_assertThisInitialized(_this)));
     return _this;
   }
 
   _createClass(Game, [{
-    key: "newGametry",
-    value: function newGametry() {
-      var keychange = this.state.newGamekey;
-      keychange++;
+    key: "newGameTry",
+    value: function newGameTry() {
+      var keyChange = this.state.newGameKey;
+      keyChange++;
       this.setState({
-        newGamekey: keychange
+        newGameKey: keyChange
       });
     }
   }, {
     key: "render",
     value: function render() {
-      return React.createElement("div", null, "Hello World");
-      /*return (
-        <div key={this.state.newGamekey} className="gameContainer">
-          <h1>Tic Tac Toe</h1>
-          <div className="gameBoard">
-            <Board/>
-          </div>
-          <div className="gameInfo">
-            <button onClick={this.newGametry.bind(this)}>Reset</button>
-          </div>
-        </div>
-      );*/
+      return React.createElement("div", {
+        key: this.state.newGameKey,
+        className: "gameContainer"
+      }, React.createElement("h1", null, "Tic Tac Toe"), React.createElement("div", {
+        className: "gameBoard"
+      }, React.createElement(Board, null)), React.createElement("div", {
+        className: "gameInfo"
+      }, React.createElement("button", {
+        onClick: this.newGameTry
+      }, "Reset")));
     }
   }]);
 
@@ -24552,7 +24882,7 @@ function (_React$Component) {
 }(React.Component);
 
 module.exports = Game;
-},{"react":"node_modules/react/index.js"}],"index.jsx":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","./Board":"component/Board.jsx"}],"index.jsx":[function(require,module,exports) {
 var React = require('react');
 
 var ReactDOM = require('react-dom');
@@ -24560,7 +24890,7 @@ var ReactDOM = require('react-dom');
 var Game = require('./component/Game');
 
 ReactDOM.render(React.createElement(Game, null), document.getElementById("app"));
-},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./component/Game":"component/Game.jsx"}],"../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"react":"node_modules/react/index.js","react-dom":"node_modules/react-dom/index.js","./component/Game":"component/Game.jsx"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -24587,7 +24917,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "55334" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57365" + '/');
 
   ws.onmessage = function (event) {
     var data = JSON.parse(event.data);
@@ -24729,5 +25059,5 @@ function hmrAccept(bundle, id) {
     return hmrAccept(global.parcelRequire, id);
   });
 }
-},{}]},{},["../../../../../usr/local/lib/node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
+},{}]},{},["node_modules/parcel-bundler/src/builtins/hmr-runtime.js","index.jsx"], null)
 //# sourceMappingURL=/index.map
